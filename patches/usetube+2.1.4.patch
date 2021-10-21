@@ -1,0 +1,22 @@
+diff --git a/node_modules/usetube/src/searchVideo.ts b/node_modules/usetube/src/searchVideo.ts
+index c880d42..f043606 100644
+--- a/node_modules/usetube/src/searchVideo.ts
++++ b/node_modules/usetube/src/searchVideo.ts
+@@ -10,7 +10,7 @@ export default async function searchVideo(terms: string, token?: string, apikey?
+     let didyoumean: string = ''
+     // initial videos search
+     if (!token) {
+-      let data = await getData('https://m.youtube.com/results?videoEmbeddable=true&search_query='+encodeURI(terms))
++      let data = await getData('http://www.whateverorigin.org/get?url=https://m.youtube.com/results?videoEmbeddable=true&search_query='+encodeURI(terms))
+       apikey = data.apikey
+       token = findVal(data, 'token')
+       items = findVal(data, 'itemSectionRenderer').contents
+@@ -39,7 +39,7 @@ export default async function searchVideo(terms: string, token?: string, apikey?
+       apikey: apikey,
+     }
+   } catch(e) {
+-    console.log('search videos error, terms: '+terms)
++    console.log('search videos error ERROR , terms: '+terms)
+     // console.log(e)
+   }
+ }
