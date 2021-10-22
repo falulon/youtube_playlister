@@ -1,48 +1,46 @@
 import React, { useState, useRef } from "react";
 import fetcher from "./components/fetcher";
-// import "./App.css";
 
 function App() {
   const [songs, setSongs] = useState("");
   const [urlToShow, setUrlToShow] = useState("");
   const [songsToSubmit, setSongsToSubmit] = useState("");
-
-  const textInput = useRef(null);
-  // let FetchedUrl = <div>Loading</div>
-
+  
+  
+  // show wait while fetching the results
   const Wait = () => {
-    if (songsToSubmit && !urlToShow) return (<p>wait...</p>);
+    if (songsToSubmit && !urlToShow) return <p>wait...</p>;
     return null;
   };
+  
+  // show the link once available
   const ShowLink = () => {
     if (!urlToShow) {
       return null;
     }
-    // return ({urlToShow && <div><a href={urlToShow}></a></div> })
+
     return (
       <div className='playlist-link'>
         <a href={urlToShow} target='_blank rel="noreferrer"'>
-            Please
-        </a>📋
+          Please
+        </a>
+        📋
       </div>
     );
   };
 
+  
+  // call the fetching function and get the final playlist url
   const GetYoutubeUrl = async () => {
-    // const songs = songsToSubmit;
-
-    if (songs) {
-      console.log("YES");
+      if (songs) {
       const songsUrl = await fetcher(songs);
-      console.log(songsUrl);
       setUrlToShow(`${songsUrl}`);
-      await console.log(urlToShow);
-      // setUrlToShow(songsUrl)
     } else {
       console.log("no songs to submit: ", songs);
     }
   };
 
+  // button handler call the functionality 
   const handleClick = async (e) => {
     e.preventDefault();
     await setSongsToSubmit(songs);
@@ -50,34 +48,36 @@ function App() {
     Wait(true);
   };
 
+
+  //app interface
+
   return (
     <div className='container'>
       <form className='form-control'>
         <textarea
-        placeholder="Enter a list of songs"
+          placeholder='Enter a list of songs'
           name='songsList'
-          ref={textInput}
           id='songsList'
           cols='30'
           rows='10'
           onChange={(e) => {
             setSongs(e.target.value);
           }}
-        value={songs}>
-          
-        </textarea>
+          value={songs}
+        ></textarea>
         <div className='container'>
           <button className='floating-btn' onClick={(e) => handleClick(e)}>
             Play
           </button>
         </div>
       </form>
-      <div className='link' onClick={() => {
-          navigator.clipboard.writeText(urlToShow)
-               }}>
-        <ShowLink classname='show-link' 
-        
-         />
+      <div
+        className='link'
+        onClick={() => {
+          navigator.clipboard.writeText(urlToShow);
+        }}
+      >
+        <ShowLink classname='show-link' />
         <Wait />
       </div>
     </div>
