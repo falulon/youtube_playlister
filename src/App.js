@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import fetcher from "./components/fetcher";
 
 function App() {
@@ -55,7 +55,7 @@ function App() {
     <div className='container'>
       <form className='form-control'>
         <textarea
-          placeholder='Enter a list of songs'
+          placeholder='Enter a list of songs:'
           name='songsList'
           id='songsList'
           cols='30'
