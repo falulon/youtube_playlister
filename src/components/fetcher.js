@@ -3,7 +3,6 @@ const { YouTube } = require('popyt');
 const apiKey = process.env.REACT_APP_ACCESS_KEY_YOUTUBE;
 
 export const Fetcher = function (songs) {
-  console.log(apiKey);
   const youtube = new YouTube(apiKey)
     let playlistUrl = "Loading";
 
@@ -43,10 +42,8 @@ export const Fetcher = function (songs) {
       idList = ["zQEV-XemfcE", "tGR4OMpMTQU", "5uVkKKxDA6c", "EPK90OyczW8"];
       //   throw e;
     } finally {
-        console.log("finally")
        playlistUrl = await
         `https://www.youtube.com/watch_videos?video_ids=${idList.toString()}`
-      await console.log(playlistUrl);
       return await playlistUrl;
     }
   };
