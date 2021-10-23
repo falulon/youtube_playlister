@@ -1,11 +1,11 @@
-* { 
-  background: #fffefb;
-}
+
 
 .container { 
   display: flex;
   justify-content: center;
   font-family: Arial, Helvetica, sans-serif;
+  background: #fffefb;
+
 }
 
 textarea
@@ -32,6 +32,8 @@ html, body
 body
 {
   margin: 0;
+  background: #fffefb;
+
 }
 
 body, input, textarea
@@ -66,6 +68,8 @@ font-size: 30px;
 
 a {
   text-decoration: none;
+  
+
 }
 
 #app-cover
